@@ -1,17 +1,20 @@
 <template>
     <div>
         <!-- TODO: Crear componente GitHub -->
+        <input v-model="user" placeholder="Introduce nombre de usuario de GitHub"  v-on:keydown="obtenerUsuario"/>
     </div>
 </template>
 
 <script>
 
 // TODO: Importar componente GitHubRepos
+import GitHubRepos from 'GitHubRepos.vue'
 
 export default {
     name: 'GitHub',
     components: {
         // TODO: Importar componente GitHubRepos
+        GitHubRepos
     },
     data: function() {
         return {
@@ -27,11 +30,20 @@ export default {
 
             // Obtener datos de autenticación de usuario para hacer peticiones
             // autenticadas a la API de GitHub
-            var userAuth = process.env.VUE_APP_USERNAME || "user";
-            var passAuth = process.env.VUE_APP_USERTOKEN || "pass";
+            var userAuth = process.env.VUE_APP_USERNAME || "Bonete";
+            var passAuth = process.env.VUE_APP_USERTOKEN || "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";
 
             // TODO: realizar petición fetch par obtener los datos y mostrar la información en la página
             // Ejemplo de paso de datos de autorización con fetch: https://stackoverflow.com/questions/43842793/basic-authentication-with-fetch
+            let url = 'https://api.github.com/users/{{user}} ';
+            fetch(url,{method:'GET'})
+            .then(response => response.json())
+            .then(data => {
+              const login = data.login;
+              const avatar = data.avatar_url;
+              const html_url = data.html_url;
+              const repos_url = data.repos_url;
+            });
 
         },
         obtenerRepositorios: function() {
@@ -40,12 +52,21 @@ export default {
 
             // Obtener datos de autenticación de usuario para hacer peticiones
             // autenticadas a la API de GitHub
-            var userAuth = process.env.VUE_APP_USERNAME || "user";
-            var passAuth = process.env.VUE_APP_USERTOKEN || "pass";
+            var userAuth = process.env.VUE_APP_USERNAME || "Bonete";
+            var passAuth = process.env.VUE_APP_USERTOKEN || "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";
 
 
             // TODO: realizar petición fetch par obtener los datos y mostrar la información en la página
             // Ejemplo de paso de datos de autorización con fetch: https://stackoverflow.com/questions/43842793/basic-authentication-with-fetch
+                        let url = 'https://api.github.com/users/{{user}}/repos';
+            fetch (url,{method:'GET'})
+            .then(response => response.json())
+            .then(data => {
+            const full_name = data.full_name;
+            const html_url = data.html_url;
+            const description = data.description;
+            const forks_count = data.forks_count;
+            });
 
         }
     }
