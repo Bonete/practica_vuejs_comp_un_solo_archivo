@@ -31,7 +31,7 @@ export default {
             // Obtener datos de autenticación de usuario para hacer peticiones
             // autenticadas a la API de GitHub
             var userAuth = process.env.VUE_APP_USERNAME || "Bonete";
-            var passAuth = process.env.VUE_APP_USERTOKEN || "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";
+            var passAuth = process.env.VUE_APP_USERTOKEN || "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";
 
             // TODO: realizar petición fetch par obtener los datos y mostrar la información en la página
             // Ejemplo de paso de datos de autorización con fetch: https://stackoverflow.com/questions/43842793/basic-authentication-with-fetch
@@ -53,7 +53,7 @@ export default {
             // Obtener datos de autenticación de usuario para hacer peticiones
             // autenticadas a la API de GitHub
             var userAuth = process.env.VUE_APP_USERNAME || "Bonete";
-            var passAuth = process.env.VUE_APP_USERTOKEN || "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";
+            var passAuth = process.env.VUE_APP_USERTOKEN || "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";
 
 
             // TODO: realizar petición fetch par obtener los datos y mostrar la información en la página
